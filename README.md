@@ -1,51 +1,51 @@
 # AutoScroll (Manifest V3)
 
-Extensão para Google Chrome e navegadores baseados em Chromium que adiciona a **rolagem automática estilo Firefox** (clique do meio ou `Ctrl`/`⌘` + clique esquerdo), ideal para **Linux** e **macOS**, onde esse recurso nativo costuma não estar disponível.
+Extension for Google Chrome and Chromium-based browsers that adds **Firefox-style autoscrolling** (middle-click or `Ctrl`/`⌘` + left-click), ideal for **Linux** and **macOS**, where this native feature is typically unavailable.
 
-Esta é uma versão atualizada para **Manifest V3** baseada na extensão original [Pauan/AutoScroll](https://github.com/Pauan/AutoScroll) (cujo pacote em Manifest V2 deixou de ser suportado na Chrome Web Store).
+This is a **Manifest V3** port based on the original [Pauan/AutoScroll](https://github.com/Pauan/AutoScroll) extension (whose Manifest V2 package is no longer supported on the Chrome Web Store).
 
-## Instalação no Chrome (Modo do desenvolvedor)
+## Installation in Chrome (Developer Mode)
 
-1. Baixe ou clone este repositório no seu computador.
-2. Abra o Chrome e acesse `chrome://extensions`.
-3. Ative a chave **Modo do desenvolvedor** no canto superior direito.
-4. Clique em **Carregar sem compactação** (*Load unpacked*).
-5. Selecione a pasta raiz deste projeto (onde está o arquivo `manifest.json`).
+1. Download or clone this repository to your computer.
+2. Open Chrome and navigate to `chrome://extensions`.
+3. Enable the **Developer mode** toggle in the top-right corner.
+4. Click **Load unpacked**.
+5. Select the root folder of this project (where `manifest.json` is located).
 
-## Como usar
+## How to Use
 
-- **Clique com o botão do meio** (ou **`Ctrl`/`⌘` + clique esquerdo**) em qualquer área livre da página.
-- Um ícone de âncora aparecerá no ponto clicado e o cursor indicará a direção da rolagem conforme você move o mouse.
-- Quanto mais longe da âncora você mover o mouse, mais rápida será a rolagem.
-- Para parar, clique novamente (no modo *sticky*) ou solte o botão (se estiver segurando após arrastar).
+- **Middle-click** (or **`Ctrl`/`⌘` + left-click**) on any free area of a webpage.
+- An anchor icon will appear where you clicked, and the cursor will indicate the scroll direction as you move the mouse.
+- The further you move the mouse away from the anchor, the faster the page scrolls.
+- To stop, click again (in *sticky* mode) or release the mouse button (if holding while dragging).
 
-## Opções configuráveis
+## Configurable Options
 
-Você pode acessar as opções clicando com o botão direito no ícone da extensão → **Opções** (ou em `chrome://extensions` → **Detalhes** → **Opções da extensão**).
+You can open the options page (currently localized in `pt-BR`) by right-clicking the extension icon → **Options** (or in `chrome://extensions` → **Details** → **Extension options**).
 
-| Categoria | Opção | Padrão | Descrição |
+| Category | Option | Default | Description |
 |---|---|---|---|
-| **Básico** | Rolar sem segurar o botão (`stickyScroll`) | Ligado | Mantém a rolagem ativa após clicar e soltar o botão. |
-| **Básico** | Limiar de arrasto (`dragThreshold`) | `10` px | Distância máxima do clique para ativar o modo *sticky* ao soltar o botão. |
-| **Básico** | Limiar de movimento (`moveThreshold`) | `10` px | Distância mínima da âncora para iniciar a rolagem. |
-| **Básico** | Ativar com clique do meio (`middleClick`) | Ligado | Permite iniciar a rolagem com o botão do meio do mouse. |
-| **Básico** | Ativar com Ctrl/⌘ + clique esquerdo (`ctrlClick`) | Ligado | Permite iniciar a rolagem segurando `Ctrl` (Linux/Windows) ou `⌘` (macOS) + clique esquerdo. |
-| **Velocidade** | Velocidade (`moveSpeed`) | `10` | Divisor de velocidade da rolagem (quanto menor o valor, mais rápido rola). |
-| **Velocidade** | Velocidade constante (`sameSpeed`) | Desligado | Ignora a distância do mouse e rola sempre na mesma velocidade. |
-| **Velocidade** | Limite máximo (`shouldCap` / `capSpeed`) | Desligado | Limita a velocidade máxima de rolagem em pixels por quadro. |
-| **Avançado** | Rolar elementos internos (`innerScroll`) | Ligado | Rola áreas internas com barra de rolagem própria (`overflow: auto`/`scroll`). |
-| **Avançado** | Ativar em links e campos de texto (`scrollOnLinks`) | Desligado | Permite iniciar a rolagem ao clicar sobre links, `textarea` e `input`. |
+| **Basic** | Scroll without holding the button (`stickyScroll`) | On | Keeps scrolling active after clicking and releasing the mouse button. |
+| **Basic** | Drag threshold (`dragThreshold`) | `10` px | Maximum click movement distance to trigger *sticky* mode upon releasing the button. |
+| **Basic** | Move threshold (`moveThreshold`) | `10` px | Minimum distance from the anchor required to start scrolling. |
+| **Basic** | Activate with middle click (`middleClick`) | On | Allows starting autoscroll with the middle mouse button. |
+| **Basic** | Activate with Ctrl/⌘ + left click (`ctrlClick`) | On | Allows starting autoscroll by holding `Ctrl` (Linux/Windows) or `⌘` (macOS) + left-click. |
+| **Speed** | Move speed (`moveSpeed`) | `10` | Scroll speed divisor (lower values scroll faster). |
+| **Speed** | Constant speed (`sameSpeed`) | Off | Ignores mouse distance and always scrolls at a constant speed. |
+| **Speed** | Speed cap (`shouldCap` / `capSpeed`) | Off | Caps the maximum scroll speed in pixels per frame. |
+| **Advanced** | Scroll inner elements (`innerScroll`) | On | Scrolls inner containers with their own scrollbars (`overflow: auto`/`scroll`). |
+| **Advanced** | Activate on links and text fields (`scrollOnLinks`) | Off | Allows starting autoscroll when clicking on links, `textarea`, and `input` elements. |
 
-## Diferenças em relação à extensão original (v4.10)
+## Differences from the Original Extension (v4.10)
 
-- **Manifest V3:** atualização completa do `manifest.json` para o padrão MV3 atual do Chrome (`options_ui`, `web_accessible_resources` em formato de objeto, remoção do antigo script de migração `main.js`).
-- **Página de opções em pt-BR sem `eval`:** reescrita em HTML/CSS/JS puros (sem `require.js`) para cumprir a Content Security Policy do MV3, com botão de restaurar padrões e suporte automático a tema claro/escuro.
-- **Correção do `capSpeed`:** no original, ativar o limite de velocidade com campo vazio travava a rolagem em `0`; agora só aplica o limite quando há um valor numérico válido (`>= 1`).
-- **Guarda do `moveSpeed` e URLs pré-calculadas:** evita divisão por zero/NaN e previne erros de contexto invalidado após recarregar a extensão.
-- **Supressão de clique fantasma:** bloqueia eventos `click`/`auxclick` logo após encerrar a rolagem para evitar que o soltar do botão abra links ou acione ações acidentais.
-- **Limpeza de compatibilidade legada:** remoção dos fallbacks antigos `createShadowRoot`/`webkitCreateShadowRoot` em favor de `attachShadow({ mode: "closed" })` e substituição de `console.assert` por verificação de área no `storage.onChanged`.
+- **Manifest V3:** full update of `manifest.json` to Chrome's current MV3 specification (`options_ui`, object-format `web_accessible_resources`, and removal of the legacy `main.js` migration script).
+- **Eval-free options page in `pt-BR`:** rewritten in plain HTML/CSS/JS (without `require.js`) to comply with MV3 Content Security Policy, featuring a reset-to-defaults button and automatic light/dark theme support.
+- **`capSpeed` bug fix:** in the original extension, enabling the speed cap with an empty input locked scrolling to `0`; now the cap is only applied when a valid numeric value (`>= 1`) is provided.
+- **`moveSpeed` guard & pre-computed asset URLs:** prevents division by zero/NaN and avoids invalidated extension context errors after reloading the extension.
+- **Ghost-click suppression:** blocks `click`/`auxclick` events briefly after stopping autoscroll to prevent releasing the button from opening links or triggering unintended actions.
+- **Legacy compatibility cleanup:** removed old `createShadowRoot`/`webkitCreateShadowRoot` fallbacks in favor of `attachShadow({ mode: "closed" })`, and replaced `console.assert` with an explicit storage area check in `storage.onChanged`.
 
-## Créditos e Licença
+## Credits & License
 
-Baseado no trabalho original de **Paul Chapman** ([Pauan/AutoScroll](https://github.com/Pauan/AutoScroll)).
-Distribuído sob a licença **X11/MIT** — consulte o arquivo [LICENSE](LICENSE) para mais detalhes.
+Based on the original work by **Paul Chapman** ([Pauan/AutoScroll](https://github.com/Pauan/AutoScroll)).
+Distributed under the **X11/MIT License** — see [LICENSE](LICENSE) for details.
