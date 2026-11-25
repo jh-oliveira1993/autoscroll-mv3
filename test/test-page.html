@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" href="data:," />
+    <title>AutoScroll — Página de Teste</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 24px;
+        font-family: system-ui, sans-serif;
+        min-height: 5000px;
+        min-width: 3000px;
+        background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+      }
+
+      .controls {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+        align-items: flex-start;
+        margin-bottom: 24px;
+      }
+
+      #inner {
+        width: 360px;
+        height: 200px;
+        overflow: auto;
+        border: 2px solid #334155;
+        background: #ffffff;
+        padding: 12px;
+      }
+
+      #inner-content {
+        height: 1500px;
+        width: 800px;
+      }
+
+      #link {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #2563eb;
+        color: #ffffff;
+        text-decoration: none;
+        border-radius: 6px;
+      }
+
+      #ta {
+        width: 260px;
+        height: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Página de teste do AutoScroll</h1>
+    <p id="status">Use o clique do meio ou Ctrl/⌘ + clique esquerdo em uma área livre para rolar.</p>
+
+    <div class="controls">
+      <div id="inner">
+        <div id="inner-content">
+          <strong>Elemento interno rolável (#inner)</strong>
+          <p>Clique com o botão do meio aqui dentro para testar o scroll interno.</p>
+        </div>
+      </div>
+
+      <a id="link" href="#x">link</a>
+
+      <textarea id="ta" placeholder="Campo de texto (#ta)"></textarea>
+    </div>
+
+    <div id="x" style="margin-top: 2000px;">Âncora #x</div>
+  </body>
+</html>

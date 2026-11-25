@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Opções — AutoScroll</title>
+    <link rel="stylesheet" href="options.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="header-title">
+          <img src="../images/icons/icon48.png" alt="AutoScroll" width="32" height="32" />
+          <h1>Opções do AutoScroll</h1>
+        </div>
+        <span id="savedStatus" class="saved-status" aria-live="polite">Salvo ✓</span>
+      </header>
+
+      <section class="card">
+        <h2>Básico</h2>
+
+        <div class="field">
+          <label class="checkbox-row">
+            <input type="checkbox" id="stickyScroll" />
+            <span>Rolar sem segurar o botão do mouse</span>
+          </label>
+          <label class="sub-field" for="dragThreshold">
+            <span>...se o mouse se mover menos de</span>
+            <input type="number" id="dragThreshold" min="0" step="1" />
+            <span>pixels</span>
+          </label>
+        </div>
+
+        <hr />
+
+        <div class="field">
+          <label class="inline-row" for="moveThreshold">
+            <span>Só começar a rolar se o mouse se mover mais de</span>
+            <input type="number" id="moveThreshold" min="0" step="1" />
+            <span>pixels</span>
+          </label>
+        </div>
+
+        <hr />
+
+        <div class="field stack">
+          <label class="checkbox-row">
+            <input type="checkbox" id="middleClick" />
+            <span>Ativar com o clique do meio</span>
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" id="ctrlClick" />
+            <span>Ativar com Ctrl/⌘ + clique esquerdo</span>
+          </label>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Velocidade</h2>
+
+        <div class="field">
+          <label class="inline-row" for="moveSpeed">
+            <span>Velocidade:</span>
+            <input type="number" id="moveSpeed" min="1" step="1" />
+            <span class="hint">(menor = mais rápido)</span>
+          </label>
+        </div>
+
+        <hr />
+
+        <div class="field stack">
+          <label class="checkbox-row">
+            <input type="checkbox" id="sameSpeed" />
+            <span>Rolar sempre na mesma velocidade (ignorar a distância do mouse)</span>
+          </label>
+
+          <div class="inline-row">
+            <label class="checkbox-row">
+              <input type="checkbox" id="shouldCap" />
+              <span>Não rolar mais rápido que</span>
+            </label>
+            <input type="number" id="capSpeed" min="1" step="1" aria-label="Limite máximo de pixels por quadro" />
+            <span>pixels por quadro</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="card">
+        <h2>Avançado</h2>
+
+        <div class="field stack">
+          <label class="checkbox-row">
+            <input type="checkbox" id="innerScroll" />
+            <span>Rolar elementos internos (áreas com barra de rolagem própria)</span>
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" id="scrollOnLinks" />
+            <span>Ativar também ao clicar em links e campos de texto</span>
+          </label>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <button type="button" id="resetBtn" class="btn-secondary">Restaurar padrões</button>
+      </footer>
+    </main>
+
+    <script src="../content/defaults.js"></script>
+    <script src="options.js"></script>
+  </body>
+</html>
