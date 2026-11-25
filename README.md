@@ -10,7 +10,7 @@ Esta é uma versão atualizada para **Manifest V3** baseada na extensão origina
 2. Abra o Chrome e acesse `chrome://extensions`.
 3. Ative a chave **Modo do desenvolvedor** no canto superior direito.
 4. Clique em **Carregar sem compactação** (*Load unpacked*).
-5. Selecione a pasta raiz deste projeto (`/home/jose/Projects/extensions/automatic_scrolling`).
+5. Selecione a pasta raiz deste projeto (onde está o arquivo `manifest.json`).
 
 ## Como usar
 
@@ -43,6 +43,7 @@ Você pode acessar as opções clicando com o botão direito no ícone da extens
 - **Correção do `capSpeed`:** no original, ativar o limite de velocidade com campo vazio travava a rolagem em `0`; agora só aplica o limite quando há um valor numérico válido (`>= 1`).
 - **Guarda do `moveSpeed` e URLs pré-calculadas:** evita divisão por zero/NaN e previne erros de contexto invalidado após recarregar a extensão.
 - **Supressão de clique fantasma:** bloqueia eventos `click`/`auxclick` logo após encerrar a rolagem para evitar que o soltar do botão abra links ou acione ações acidentais.
+- **Limpeza de compatibilidade legada:** remoção dos fallbacks antigos `createShadowRoot`/`webkitCreateShadowRoot` em favor de `attachShadow({ mode: "closed" })` e substituição de `console.assert` por verificação de área no `storage.onChanged`.
 
 ## Créditos e Licença
 
